@@ -8,32 +8,34 @@ use Psr\Http\Message\ResponseInterface;
 
 class RestApiClient
 {
-  private $api_url;
+  private $base_url;
   private $client;
 
-  public function __construct(string $url)
+  public function __construct(string $base_url)
   {
-    $this->api_url = $url;
-    $this->client = new Client(['base_uri' => $this->api_url]);
+    $this->base_url = $base_url;
+    $this->client = new Client(['base_uri' => $this->base_url]);
   }
 
   /**
    * Perform a GET request
    *
+   * @param string $url
    * @param array $queries
    * @param string $token
    * @return array|string
    * @throws \GuzzleHttp\Exception\GuzzleException
    */
-  public function get(array $queries = [], string $token = null)
+  public function get(string $url, array $queries = [], string $token = null)
   {
     try {
       $headers = ['Content-Type' => 'application/json'];
       if ($token) {
         $headers['Authorization'] = 'Bearer ' . $token;
       }
+      $fullUrl = $this->base_url . '/' . $url;
 
-      $response = $this->client->get('', ['query' => $queries, 'headers' => $headers]);
+      $response = $this->client->get($fullUrl, ['query' => $queries, 'headers' => $headers]);
       return $this->handleResponse($response);
     } catch (RequestException $e) {
       return $this->handleException($e);
@@ -43,20 +45,21 @@ class RestApiClient
   /**
    * Perform a POST request
    *
+   * @param string $url
    * @param array $data
    * @param string $token
    * @return array|string
    * @throws \GuzzleHttp\Exception\GuzzleException
    */
-  public function post(array $data, string $token = null)
+  public function post(string $url, array $data, string $token = null)
   {
     try {
       $headers = ['Content-Type' => 'application/json'];
       if ($token) {
         $headers['Authorization'] = 'Bearer ' . $token;
       }
-
-      $response = $this->client->post('', ['json' => $data, 'headers' => $headers]);
+      $fullUrl = $this->base_url . '/' . $url;
+      $response = $this->client->post($fullUrl, ['json' => $data, 'headers' => $headers]);
       return $this->handleResponse($response);
     } catch (RequestException $e) {
       return $this->handleException($e);
@@ -66,20 +69,21 @@ class RestApiClient
   /**
    * Perform a PUT request
    *
+   * @param string $url
    * @param array $data
    * @param string $token
    * @return array|string
    * @throws \GuzzleHttp\Exception\GuzzleException
    */
-  public function put(array $data, string $token = null)
+  public function put(string $url, array $data, string $token = null)
   {
     try {
       $headers = ['Content-Type' => 'application/json'];
       if ($token) {
         $headers['Authorization'] = 'Bearer ' . $token;
       }
-
-      $response = $this->client->put('', ['json' => $data, 'headers' => $headers]);
+      $fullUrl = $this->base_url . '/' . $url;
+      $response = $this->client->put($fullUrl, ['json' => $data, 'headers' => $headers]);
       return $this->handleResponse($response);
     } catch (RequestException $e) {
       return $this->handleException($e);
@@ -89,19 +93,20 @@ class RestApiClient
   /**
    * Perform a DELETE request
    *
+   * @param string $url
    * @param string $token
    * @return array|string
    * @throws \GuzzleHttp\Exception\GuzzleException
    */
-  public function delete(string $token = null)
+  public function delete(string $url, string $token = null)
   {
     try {
       $headers = ['Content-Type' => 'application/json'];
       if ($token) {
         $headers['Authorization'] = 'Bearer ' . $token;
       }
-
-      $response = $this->client->delete('', ['headers' => $headers]);
+      $fullUrl = $this->base_url . '/' . $url;
+      $response = $this->client->delete($fullUrl, ['headers' => $headers]);
       return $this->handleResponse($response);
     } catch (RequestException $e) {
       return $this->handleException($e);
