@@ -1,6 +1,7 @@
 version: "3"
 services:
   web:
+    container_name: web
     build:
       context: .
       dockerfile: Dockerfile
@@ -8,3 +9,18 @@ services:
       - 8000:80
     volumes:
       - ./src:/var/www/html
+
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgresweb}
+      PGDATA: /data/postgres
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+networks:
+  postgres:
+    driver: bridge
