@@ -1,40 +1,26 @@
 # Use an official PHP runtime as the base image
-FROM webdevops/php-apache-dev
+FROM php:8.2-rc-apache
 
-# Set the working directory in the container
-WORKDIR /var/www/html
+# Set the working directory to /app
+WORKDIR /app
 
-# Copy the composer.json and composer.lock files to the container
-COPY composer.json composer.lock ./
+# Copy the current directory contents into the container at /app
+COPY . /app
 
-# Install PHP extensions and dependencies
-RUN apt-get update && \
-    apt-get install -y \
-        libzip-dev \
-        unzip \
-        && \
-    docker-php-ext-install zip && \
-    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+# Install any needed packages
+RUN apt-get update && apt-get install -y \
+    git \
+    zip \
+    unzip \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install project dependencies
-RUN composer install --no-scripts --no-autoloader
+# Install composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Copy the rest of the application code to the container
-COPY . .
+# Install dependencies
+RUN composer install --no-interaction --no-dev --no-scripts --no-progress --prefer-dist
 
-# Generate the autoloader
-RUN composer dump-autoload --optimize
-
-# Set the document root of the web server
-ENV APACHE_DOCUMENT_ROOT /var/www/html/public
-RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
-RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
-
-# Enable Apache mod_rewrite
-RUN a2enmod rewrite
-
-# Expose port 80 to the host
+# Make port 80 available to the world outside this container
 EXPOSE 80
 
-# Start the Apache server
-CMD ["apache2-foreground"]
+
