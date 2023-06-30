@@ -219,7 +219,7 @@ body {
 .card {
   width: 1200px;
   padding: 20px;
-  background-color: #ffffff;
+  background-color: rgba(251, 251, 253, .92);
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
