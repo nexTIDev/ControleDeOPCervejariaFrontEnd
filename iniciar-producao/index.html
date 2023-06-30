@@ -14,6 +14,21 @@
   </head>
 
   <style>
+
+     .card2 {
+    transition: transform 0.3s ease;
+  }
+
+  .card2:hover {
+    transform: scale(1.1);
+  }
+
+
+    .card2 {
+    cursor: pointer;
+  }
+    
+
     .card-custom {
     width: 200px;
     padding: 20px;
@@ -31,6 +46,35 @@
     text-decoration: none;
     border-radius: 5px;
     }
+
+    .card2 {
+    display: inline-block;
+    width: 33%;
+    background-color: rgba(251, 251, 253, .92);;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .card2 img {
+    width: 100%;
+    border-radius: 5px;
+    }
+
+    .card2-content {
+    margin-top: 10px;
+    }
+
+    .card2-content h2 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    }
+
+    .card2-content p {
+    font-size: 14px;
+    }
+
+  
   </style>
 
   <body>
@@ -139,23 +183,33 @@
         <div class="col">
           <div class="row">
             <div class="col  m-2">
-              <div class="card-custom">
+              <div class="card2" onclick="redirecionarParaPagina('https://google.com')">
                 <h1>Tadicional</h1>
-                <h3>Informação</h3>
+                <h3>Cerveja pilsen</h3>
+                <img src="/menu/images/card1.jpg" alt="Descrição da imagem">
               </div>
-              <div class="card-custom">
+              
+              <div class="card2">
                 <h1>Artesanal</h1>
-                <h3>Informação</h3>
+                <h3>Levedura de milho</h3>
+                <img src="/menu/images/card1.jpg" alt="Descrição da imagem">
               </div>
-              <div class="card-custom">
+              <div class="card2">
                 <h1>Não alcoolica</h1>
-                <h3>Informação</h3>
+                <h3>Fermentando o milho</h3>
+                <img src="/menu/images/card1.jpg" alt="Descrição da imagem">
               </div>
             </div>
                 <h2 class="mr-2">Selecione qual categoria de cerveja deseja iniciar</h2>
           </div>
         </div>
     </div>
+    <script>
+      function redirecionarParaPagina(url) {
+        window.location.href = url;
+      }
+    </script>
+    
       
   </body>
 </html>
