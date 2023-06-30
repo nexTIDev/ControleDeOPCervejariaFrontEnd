@@ -6,12 +6,12 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - 8000:80
+      - 9000:80
     volumes:
-      - ./src:/var/www/html
+      - .:/var/www/html
 
   postgres:
-    container_name: postgres
+    container_name: postgres-web
     image: postgres:latest
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
