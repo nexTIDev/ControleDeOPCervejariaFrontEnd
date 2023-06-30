@@ -14,6 +14,13 @@
 </head>
 
 <style>
+  .card3 {
+    width: 100%;
+    padding: 20px;
+    background-color: rgba(251, 251, 253, .92);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
   .card2 {
     transition: transform 0.3s ease;
   }
@@ -175,22 +182,22 @@
     <h1 class="display-2">Seja bem Vindo Usuario</h1>
     <div class="card">
       <div class="card2">
-        <div class="card2-content">
-          <img src="/menu/images/card1.jpg" alt="Descrição da imagem">
+        <div class="card2-content" onclick="redirecionarParaPagina('/iniciar-producao/')">
+          <img src="/menu/images/card6.jpg" alt="Descrição da imagem">
           <h2>Começar a Arte!</h2>
           <p>Clique no car e começe a produzir cerveja agora mesmo</p>
         </div>
       </div>
       <div class="card2">
-        <div class="card2-content">
-          <img src="/menu/images/card1.jpg" alt="Descrição da imagem">
+        <div class="card2-content" onclick="redirecionarParaPagina('/aprendizagem/')">
+          <img src="/menu/images/card4.jpg" alt="Descrição da imagem">
           <h2>Mestre Cervejeiro</h2>
           <p>Aprenda todos os truques para a produção de cerveja de qualidade</p>
         </div>
       </div>
       <div class="card2">
-        <div class="card2-content">
-          <img src="/menu/images/card1.jpg" alt="Descrição da imagem">
+        <div class="card2-content" onclick="redirecionarParaPagina('/iniciar-producao/')">
+          <img src="/menu/images/card7.jpg" alt="Descrição da imagem">
           <h2>Sobre Nós</h2>
           <p>Informação os desenvolvedores amantes do nectar dos Vikings</p>
         </div>
@@ -198,30 +205,20 @@
       <div class="col">
         <div class="row">
           <div class="col  m-2">
-
-
-
-            <!--<div class="card-custom">
-                <img src="/menu/images/card1.jpg" alt="Descrição da imagem">
-                <h1>Começar a Arte!</h1>
-                <h3>Comece a produzir cerveja agora mesmo</h3>
+            <div class="card3">
+              <div class="card-body">
+                <h4 class="card-title">Cervejas em Produção</h4>
+                <p class="card-text">Acompanhe o processo das cervejas em produção</p>
+                <a href="/pesquisa-producao/" class="btn btn-primary">Acompanhar</a>
               </div>
-              <div class="card-custom">
-                <h1>Mestre Cervejeiro</h1>
-                <h3>Aprenda todos os truques para a produção de cerveja de qualidade</h3>
-              </div>
-              <div class="card-custom">
-                <h1>Sobre Nós</h1>
-                <h3>Informação os desenvolvedores amantes do nectar dos Vikings</h3>
-              </div>
-            </div> 
-                
-              <a class="mr-3"text-align="justify">Nosso software foi criado para ajudar pequenos produtores e apreciadores de cerveja em todo o Brasil. Com ele, você poderá produzir cerveja artesanal em casa ou iniciar um pequeno negócio. Oferecemos receitas detalhadas, orientações de produção e uma comunidade de entusiastas. Nosso objetivo é apoiar sua paixão pela cerveja e proporcionar resultados excepcionais.</a>
-
-              <h4>...Feito com amor para quem ama cerveja!</h4>-->
+            </div>
           </div>
         </div>
       </div>
+      <script>
+        function redirecionarParaPagina(url) {
+          window.location.href = url;
+        }
+      </script>
 </body>
-
 </html>

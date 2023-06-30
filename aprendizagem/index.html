@@ -258,7 +258,7 @@
 
   <!-- Site -->
   <div>
-    <h1 class="display-2">Vamos iniciar a criação usuario!</h1>
+    <h1 class="display-2">Como fazer cerveja?</h1>
     <div class="card">
       <div class="col">
         <div class="row">
@@ -268,55 +268,21 @@
               <h3>Cerveja pilsen</h3>
               <img src="/menu/images/card2.jpg" alt="Descrição da imagem">
             </div>
-            <!-- modal -->
-            <div id="modal" class="modal">
-              <div class="modal-content">
-                <span class="close" onclick="fecharModal()">&times;</span>
-                <form id="quantidade-form">
-                  <input type="text" id="tipo" name="tipo" hidden />
-                  <input type="number" id="quantidade-engradados" placeholder="Quantidade de Engradados:"
-                    name="quantidade-engradados" required min="1" />
-                  <button type="submit">Confirmar</button>
-                </form>
-              </div>
-            </div>
-
+           
             <div class="card2" onclick="abrirModal1()">
               <h1>Artesanal</h1>
               <h3>Levedura de milho</h3>
               <img src="/menu/images/card1.jpg" alt="Descrição da imagem">
             </div>
-            <!-- modal -->
-            <div id="modal" class="modal">
-              <div class="modal-content">
-                <span class="close" onclick="fecharModal1()">&times;</span>
-                <form id="quantidade-form">
-                  <input type="text" id="tipo1" name="tipo" hidden />
-                  <input type="number" id="q1" placeholder="Quantidade de Engradados:" name="q1" required min="1" />
-                  <button type="submit">Confirmar</button>
-                </form>
-              </div>
-            </div>
-
+            
             <div class="card2" onclick="abrirModal2()">
               <h1>Não alcoolica</h1>
               <h3>Fermentando o milho</h3>
               <img src="/menu/images/card3.jpg" alt="Descrição da imagem">
             </div>
           </div>
-          <!-- modal -->
-          <div id="modal" class="modal">
-            <div class="modal-content">
-              <span class="close" onclick="fecharModal2()">&times;</span>
-              <form id="quantidade-form">
-                <input type="text" id="q2" name="tipo2" hidden />
-                <input type="number" id="q2" placeholder="Quantidade de Engradados:" name="q2" required min="1" />
-                <button type="submit">Confirmar</button>
-              </form>
-            </div>
-          </div>
-
-          <h2 class="mr-2">Selecione qual categoria de cerveja deseja criar</h2>
+          
+          <h2 class="mr-2">Selecione qual categoria de cerveja deseja aprender</h2>
         </div>
       </div>
     </div>
@@ -327,36 +293,37 @@
       }
     </script>
 
-    <script>
-      function abrirModal() {
-        document.getElementById('modal').style.display = 'block';
-      }
-
-      function fecharModal() {
-        document.getElementById('modal').style.display = 'none';
-      }
-    </script>
-
-    <script>
-      function abrirModal1() {
-        document.getElementById('modal').style.display = 'block';
-      }
-
-      function fecharModal1() {
-        document.getElementById('modal').style.display = 'none';
-      }
-    </script>
-
-    <script>
-      function abrirModal2() {
-        document.getElementById('modal').style.display = 'block';
-      }
-
-      function fecharModal2() {
-        document.getElementById('modal').style.display = 'none';
-      }
-    </script>
-
+    <!--<div class="modal" id="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Cerveja Tradicional</h5>
+          <button type="button" class="close" onclick="fecharModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Cerveja pilsen</p>
+          <p>Ingredientes: Água, malte de cevada, lúpulo e levedura</p>
+          <p>Temperatura de fermentação: 10ºC</p>
+          <p>Tempo de fermentação: 7 dias</p>
+          <p>Tempo de maturação: 14 dias</p>
+          <p>Tempo de envase: 1 dia</p>
+          <p>Tempo de pasteurização: 1 dia</p>
+          <p>Tempo de resfriamento: 1 dia</p>
+          <p>Tempo de rotulagem: 1 dia</p>
+          <p>Tempo de embalagem: 1 dia</p>
+          <p>Tempo de armazenamento: 1 dia</p>
+          <p>Tempo de distribuição: 1 dia</p>
+          <p>Tempo de venda: 1 dia</p>
+          <p>Tempo de consumo: 1 dia</p>
+          <p>Tempo de descarte: 1 dia</p>
+          <p>Tempo total: 32 dias</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="fecharModal()">Fechar</button>
+          <button type="button" class="btn btn-primary" onclick="redirecionarParaPagina('/iniciar-producao/criar-cerveja.php')">Iniciar</button>
+        </div>
+      </div>-->
 
 </body>
 
